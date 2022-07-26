@@ -16,7 +16,7 @@ catkin_package(
 )
 
 include_directories(include ${catkin_INCLUDE_DIRS} ${EIGEN3_INCLUDE_DIRS} ${EIGEN_INCLUDE_DIRS})
-add_definitions(-std=c++11)
+add_definitions(-std=c++14)
 
 # The core tool calibration library
 add_library(${PROJECT_NAME}
