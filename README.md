@@ -15,13 +15,14 @@ To use:
   3. Identify a tool0 frame. This is the frame from which you wish to calibrate a TCP. This will typically be the flange of the robot `tool0`.
 
   4. Run the calibration node:
-  ```
-  roslaunch tool_point_calibration console_calibration.launch base_frame:=YOUR_BASE_FRAME tool0_frame:=YOUR_TOOL0_FRAME num_samples:=NUMBER_OF_TOUCH_POINTS
-  ```
-  By default base frame is `base_frame`, tool0_frame is `tool0`, and num_samples is `4`. I recommend you use at least 4
-  samples.
+
+    roslaunch tool_point_calibration console_calibration.launch base_frame:=YOUR_BASE_FRAME tool0_frame:=YOUR_TOOL0_FRAME num_samples:=NUMBER_OF_TOUCH_POINTS
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;By default base frame is "base_frame", tool0_frame is "tool0", and num_samples is "4". I recommend you use at least 4 samples.
 
   5. Jog the robot so that the tool you wish to calibrate is touching a known point in the world, such as the tip of a nail or the corner of a work-piece. When your're happy, press enter in the console window from which you ran the tcp calibration routine. You should see a 4x4 matrix print out.
+  
+      If you want to jog the robot using KUKA pendant in T1 mode, you can record the joint positions or the flange pose at each touch point and use those in ROS by running the move_robot.py script in the scripts folder. After rviz is launched and the tool_point_calibration program is running on a terminal, enter either the pose goal or joint goal of the touch point in the move_robot.py script and run the script to move the robot using moveit Python interface, and once the robot has moved to the target, press enter on the calibration terminal to record the point.
 
   6. Repeat step 5 at least three more times. Each time approach the fixed point in the world from a different orientation. If you wish to abort early, control-C the node.
 
